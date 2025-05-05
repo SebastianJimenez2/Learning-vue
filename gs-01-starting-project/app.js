@@ -1,16 +1,16 @@
 Vue.createApp({
-        data() {
-                return {
-                        goals: [],
-                        enteredValue: ""
-                };
-        },
-        methods: {
-                addGoal() {
-                        this.goals.push(this.enteredValue);
-                        this.enteredValue = ""; // Clear the input field after adding the goal
-                }
-        }
+  data() {
+    return {
+      goals: [],
+      enteredValue: "",
+    };
+  },
+  methods: {
+    addGoal() {
+      this.goals.push(this.enteredValue);
+      this.enteredValue = ""; // Clear the input field after adding the goal
+    },
+  },
 }).mount("#app");
 
 /* const buttonEL = document.querySelector("button");
@@ -26,4 +26,3 @@ function addGoal() {
 }
 
 buttonEL.addEventListener("click", addGoal); */
-
