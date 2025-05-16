@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import { createRouter } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
 import BaseModal from './components/BaseModal.vue';
@@ -20,4 +20,6 @@ app.component('base-modal', BaseModal);
 
 app.use(router);
 
-app.mount('#app');
+router.isReady().then(function () {
+  app.mount('#app');
+});

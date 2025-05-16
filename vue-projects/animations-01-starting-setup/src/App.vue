@@ -1,5 +1,11 @@
 <template>
-  <div class="container">
+  <router-view v-slot="slotProps">
+    <transition name="route" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
+
+  <!--   <div class="container">
     <user-list></user-list>
   </div>
   <div class="container">
@@ -34,15 +40,15 @@
   </base-modal>
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import UserList from './components/UsersList.vue';
+/* import UserList from './components/UsersList.vue'; */
 export default {
-  components: {
+  /*   components: {
     UserList,
-  },
+  }, */
   data() {
     return {
       animatedBlock: false,
@@ -54,7 +60,7 @@ export default {
     };
   },
   methods: {
-    enterCancelled() {
+    /*     enterCancelled() {
       clearInterval(this.enterInterval);
     },
     leaveCancelled() {
@@ -122,7 +128,7 @@ export default {
     },
     hideDialog() {
       this.dialogIsVisible = false;
-    },
+    },*/
   },
 };
 </script>
@@ -190,6 +196,19 @@ button:active {
 .fade-button-enter-to,
 .fade-button-leave-from {
   opacity: 1;
+}
+
+.route-enter-from {
+}
+
+.route-enter-active {
+  animation: slide-scale 0.4s ease-out;
+}
+.route-enter-to {
+}
+
+.router-leave-active {
+  animation: slide-scale 0.4s ease-in;
 }
 
 @keyframes slide-scale {
