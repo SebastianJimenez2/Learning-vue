@@ -39,7 +39,7 @@ const store = createStore({
       return finalCounter;
     },
   },
-});
+}); 
 
 const app = createApp(App);
 
