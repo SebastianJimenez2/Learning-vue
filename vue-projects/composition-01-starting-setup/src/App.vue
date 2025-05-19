@@ -1,23 +1,27 @@
 <template>
   <section class="container">
-    <h2>{{ uName }}</h2>
-    <h3>{{ uAge }}</h3>
-    <button @click="setNewAge">Change age</button>
+    <UserData
+      :first-name="firstName"
+      :last-name="lastName"
+      :age="uAge"
+    />
+    <button @click="setNewAge">Change Age</button>
     <div>
-      <input type="text" placeholder="FirstName" v-model="firstName" />
-      <input type="text" placeholder="LastName" ref="lastNameInput" />
-      <button @click="setLastName"> Set Last Name</button>
+      <input type="text" placeholder="First Name" v-model="firstName" />
+      <input type="text" placeholder="Last Name" ref="lastNameInput" />
+      <button @click="setLastName">Set Last Name</button>
     </div>
   </section>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue';
+import UserData from './components/UserData.vue';
 
-// reactive solo trabaja con objetos refs trabaja con cualquier tipo de dato
+// const uName = ref('Maximilian');
 const firstName = ref('');
 const lastName = ref('');
-const lastNameInput = ref(null)
+const lastNameInput = ref(null);
 const uAge = ref(31);
 
 const uName = computed(function () {
@@ -25,10 +29,10 @@ const uName = computed(function () {
 });
 
 watch([uAge, uName], function (newValues, oldValues) {
-  console.log('old age: ' + oldValues[0]);
-  console.log('new age: ' + newValues[0]);
-  console.log('old name: ' + oldValues[1]);
-  console.log('new name: ' + newValues[1]);
+  console.log('Old age: ' + oldValues[0]);
+  console.log('New age: ' + newValues[0]);
+  console.log('Old name: ' + oldValues[1]);
+  console.log('New name: ' + newValues[1]);
 });
 
 function setNewAge() {
@@ -36,7 +40,7 @@ function setNewAge() {
 }
 
 function setLastName() {
-  lastName.value = lastNameInput.value.value
+  lastName.value = lastNameInput.value.value;
 }
 </script>
 
