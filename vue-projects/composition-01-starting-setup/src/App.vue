@@ -5,7 +5,8 @@
     <button @click="setNewAge">Change age</button>
     <div>
       <input type="text" placeholder="FirstName" v-model="firstName" />
-      <input type="text" placeholder="LastName" v-model="lastName" />
+      <input type="text" placeholder="LastName" ref="lastNameInput" />
+      <button @click="setLastName"> Set Last Name</button>
     </div>
   </section>
 </template>
@@ -16,6 +17,7 @@ import { ref, computed, watch } from 'vue';
 // reactive solo trabaja con objetos refs trabaja con cualquier tipo de dato
 const firstName = ref('');
 const lastName = ref('');
+const lastNameInput = ref(null)
 const uAge = ref(31);
 
 const uName = computed(function () {
@@ -31,6 +33,10 @@ watch([uAge, uName], function (newValues, oldValues) {
 
 function setNewAge() {
   uAge.value = 33;
+}
+
+function setLastName() {
+  lastName.value = lastNameInput.value.value
 }
 </script>
 
